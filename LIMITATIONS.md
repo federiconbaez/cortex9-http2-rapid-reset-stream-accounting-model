@@ -14,5 +14,15 @@
   refused stream is recorded as closed; the REFUSED_STREAM frame is not
   modelled. "Idle" means a client id greater than the highest one opened.
 - **Sweep numbers are model facts,** not server measurements.
-- CI is defined in `.github/workflows/ci.yml`; until it runs on a hosted
-  runner, only local runs (rustc 1.99.1) back the results.
+- **Closed streams are kept, memory is not bounded or measured.**
+  `Server::streams` is a `BTreeMap` that keeps every stream id ever seen,
+  including `Closed` (and refused) ones, so the model's own state grows with
+  the number of streams opened. It does not model, measure or claim a bound
+  on total server memory, and it says nothing about how a real server
+  discards closed-stream state. The metrics count streams, handlers, queue
+  and ticks only.
+- **No real server.** Nothing here is derived from measuring golang.org/x/net
+  or any other server; the fix is ported as logic from the cited diff.
+- CI is defined in `.github/workflows/ci.yml` (fmt, clippy, tests, results
+  regeneration). Results were also reproduced locally with rustc 1.99.1; the
+  status of hosted runs is whatever the repository's Actions page shows.

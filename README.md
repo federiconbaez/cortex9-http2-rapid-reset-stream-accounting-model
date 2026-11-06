@@ -8,7 +8,7 @@ study the Rapid Reset pattern (CVE-2023-44487).
 
 **This is a model, not a reproduction of CVE-2023-44487.** There are no
 sockets, no frame encoding, no HTTP parsing, and nothing can be pointed at a
-server. See [LIMITATIONS.md](LIMITATIONS.md).
+server. It keeps every stream it has seen, including `Closed` ones, and does not measure or bound total server memory. See [LIMITATIONS.md](LIMITATIONS.md).
 
 ## What is modelled, and from where
 

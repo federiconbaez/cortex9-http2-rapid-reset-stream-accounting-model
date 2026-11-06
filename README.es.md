@@ -29,4 +29,8 @@ cargo test
 cargo run --release --bin h2-model -- matrix fixtures/scenarios results
 ```
 
+Alcance: el modelo guarda en memoria todos los streams vistos, incluidos los
+`Closed`; no mide ni acota la memoria total de un servidor y no es un
+servidor real ni una medición de uno.
+
 Ver [SOURCES.md](SOURCES.md), [LIMITATIONS.md](LIMITATIONS.md). Licencia Apache-2.0.
