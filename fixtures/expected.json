@@ -1,0 +1,15 @@
+{
+ "_comment": "Hand-derived expectations, read only by tests. Values: verdict, error kind or null, peak_running_handlers.",
+ "01_benign_requests_per_request": ["work_bounded", null, 100],
+ "02_benign_requests_bounded": ["work_bounded", null, 100],
+ "03_benign_occasional_cancel_per_request": ["work_bounded", null, 100],
+ "04_benign_occasional_cancel_bounded": ["work_bounded", null, 100],
+ "05_over_limit_no_reset_per_request": ["work_bounded", null, 100],
+ "06_rapid_reset_per_request": ["work_exceeds_stream_limit", null, 1000],
+ "07_rapid_reset_bounded": ["connection_closed", "EnhanceYourCalm", 100],
+ "08_rapid_reset_per_request_handlers_cancel": ["work_exceeds_stream_limit", null, 200],
+ "09_rapid_reset_bounded_small_rate": ["work_bounded", null, 100],
+ "10_bad_stream_id": ["connection_closed", "ProtocolErrorStreamId", 0],
+ "11_rst_on_idle": ["connection_closed", "ProtocolErrorRstIdle", 1],
+ "12_reset_before_start_skipped": ["work_bounded", null, 2]
+}

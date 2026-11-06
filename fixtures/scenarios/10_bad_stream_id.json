@@ -1,0 +1,23 @@
+{
+  "name": "10_bad_stream_id",
+  "description": "Even stream id from a client: connection error.",
+  "server": {
+    "max_concurrent_streams": 100,
+    "scheduler": "per_request",
+    "handler_ticks": 5,
+    "handler_observes_cancel": false
+  },
+  "workload": {
+    "kind": "explicit",
+    "ticks": [
+      [
+        {
+          "f": "headers",
+          "id": 2,
+          "end_stream": true
+        }
+      ]
+    ]
+  },
+  "drain_ticks": 10
+}

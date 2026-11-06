@@ -1,0 +1,17 @@
+{
+  "name": "04_benign_occasional_cancel_bounded",
+  "description": "Benign: occasional cancels with bounded queue.",
+  "server": {
+    "max_concurrent_streams": 100,
+    "scheduler": "bounded_queue",
+    "handler_ticks": 5,
+    "handler_observes_cancel": false
+  },
+  "workload": {
+    "kind": "occasional_cancel",
+    "ticks": 10,
+    "per_tick": 20,
+    "reset_every": 10
+  },
+  "drain_ticks": 10
+}

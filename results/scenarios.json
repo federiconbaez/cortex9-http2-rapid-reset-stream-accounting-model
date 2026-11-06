@@ -1,0 +1,227 @@
+[
+  {
+    "scenario": "01_benign_requests_per_request",
+    "verdict": "work_bounded",
+    "error": null,
+    "metrics": {
+      "requests_accepted": 200,
+      "refused_streams": 0,
+      "resets_received": 0,
+      "handlers_started": 200,
+      "handlers_skipped_reset_before_start": 0,
+      "responses_sent": 200,
+      "handler_ticks_total": 1000,
+      "peak_counted_streams": 100,
+      "peak_running_handlers": 100,
+      "peak_queue": 0
+    },
+    "ticks_run": 20
+  },
+  {
+    "scenario": "02_benign_requests_bounded",
+    "verdict": "work_bounded",
+    "error": null,
+    "metrics": {
+      "requests_accepted": 200,
+      "refused_streams": 0,
+      "resets_received": 0,
+      "handlers_started": 200,
+      "handlers_skipped_reset_before_start": 0,
+      "responses_sent": 200,
+      "handler_ticks_total": 1000,
+      "peak_counted_streams": 100,
+      "peak_running_handlers": 100,
+      "peak_queue": 0
+    },
+    "ticks_run": 20
+  },
+  {
+    "scenario": "03_benign_occasional_cancel_per_request",
+    "verdict": "work_bounded",
+    "error": null,
+    "metrics": {
+      "requests_accepted": 200,
+      "refused_streams": 0,
+      "resets_received": 20,
+      "handlers_started": 200,
+      "handlers_skipped_reset_before_start": 0,
+      "responses_sent": 180,
+      "handler_ticks_total": 1000,
+      "peak_counted_streams": 91,
+      "peak_running_handlers": 100,
+      "peak_queue": 0
+    },
+    "ticks_run": 20
+  },
+  {
+    "scenario": "04_benign_occasional_cancel_bounded",
+    "verdict": "work_bounded",
+    "error": null,
+    "metrics": {
+      "requests_accepted": 200,
+      "refused_streams": 0,
+      "resets_received": 20,
+      "handlers_started": 200,
+      "handlers_skipped_reset_before_start": 0,
+      "responses_sent": 180,
+      "handler_ticks_total": 1000,
+      "peak_counted_streams": 91,
+      "peak_running_handlers": 100,
+      "peak_queue": 0
+    },
+    "ticks_run": 20
+  },
+  {
+    "scenario": "05_over_limit_no_reset_per_request",
+    "verdict": "work_bounded",
+    "error": null,
+    "metrics": {
+      "requests_accepted": 200,
+      "refused_streams": 1800,
+      "resets_received": 0,
+      "handlers_started": 200,
+      "handlers_skipped_reset_before_start": 0,
+      "responses_sent": 200,
+      "handler_ticks_total": 1000,
+      "peak_counted_streams": 100,
+      "peak_running_handlers": 100,
+      "peak_queue": 0
+    },
+    "ticks_run": 20
+  },
+  {
+    "scenario": "06_rapid_reset_per_request",
+    "verdict": "work_exceeds_stream_limit",
+    "error": null,
+    "metrics": {
+      "requests_accepted": 2000,
+      "refused_streams": 0,
+      "resets_received": 2000,
+      "handlers_started": 2000,
+      "handlers_skipped_reset_before_start": 0,
+      "responses_sent": 0,
+      "handler_ticks_total": 10000,
+      "peak_counted_streams": 1,
+      "peak_running_handlers": 1000,
+      "peak_queue": 0
+    },
+    "ticks_run": 20
+  },
+  {
+    "scenario": "07_rapid_reset_bounded",
+    "verdict": "connection_closed",
+    "error": [
+      2,
+      "EnhanceYourCalm"
+    ],
+    "metrics": {
+      "requests_accepted": 502,
+      "refused_streams": 0,
+      "resets_received": 501,
+      "handlers_started": 100,
+      "handlers_skipped_reset_before_start": 0,
+      "responses_sent": 0,
+      "handler_ticks_total": 200,
+      "peak_counted_streams": 1,
+      "peak_running_handlers": 100,
+      "peak_queue": 401
+    },
+    "ticks_run": 2
+  },
+  {
+    "scenario": "08_rapid_reset_per_request_handlers_cancel",
+    "verdict": "work_exceeds_stream_limit",
+    "error": null,
+    "metrics": {
+      "requests_accepted": 2000,
+      "refused_streams": 0,
+      "resets_received": 2000,
+      "handlers_started": 2000,
+      "handlers_skipped_reset_before_start": 0,
+      "responses_sent": 0,
+      "handler_ticks_total": 0,
+      "peak_counted_streams": 1,
+      "peak_running_handlers": 200,
+      "peak_queue": 0
+    },
+    "ticks_run": 20
+  },
+  {
+    "scenario": "09_rapid_reset_bounded_small_rate",
+    "verdict": "work_bounded",
+    "error": null,
+    "metrics": {
+      "requests_accepted": 500,
+      "refused_streams": 0,
+      "resets_received": 500,
+      "handlers_started": 200,
+      "handlers_skipped_reset_before_start": 300,
+      "responses_sent": 0,
+      "handler_ticks_total": 1000,
+      "peak_counted_streams": 1,
+      "peak_running_handlers": 100,
+      "peak_queue": 150
+    },
+    "ticks_run": 20
+  },
+  {
+    "scenario": "10_bad_stream_id",
+    "verdict": "connection_closed",
+    "error": [
+      0,
+      "ProtocolErrorStreamId"
+    ],
+    "metrics": {
+      "requests_accepted": 0,
+      "refused_streams": 0,
+      "resets_received": 0,
+      "handlers_started": 0,
+      "handlers_skipped_reset_before_start": 0,
+      "responses_sent": 0,
+      "handler_ticks_total": 0,
+      "peak_counted_streams": 0,
+      "peak_running_handlers": 0,
+      "peak_queue": 0
+    },
+    "ticks_run": 0
+  },
+  {
+    "scenario": "11_rst_on_idle",
+    "verdict": "connection_closed",
+    "error": [
+      0,
+      "ProtocolErrorRstIdle"
+    ],
+    "metrics": {
+      "requests_accepted": 1,
+      "refused_streams": 0,
+      "resets_received": 0,
+      "handlers_started": 1,
+      "handlers_skipped_reset_before_start": 0,
+      "responses_sent": 0,
+      "handler_ticks_total": 0,
+      "peak_counted_streams": 1,
+      "peak_running_handlers": 1,
+      "peak_queue": 0
+    },
+    "ticks_run": 0
+  },
+  {
+    "scenario": "12_reset_before_start_skipped",
+    "verdict": "work_bounded",
+    "error": null,
+    "metrics": {
+      "requests_accepted": 4,
+      "refused_streams": 0,
+      "resets_received": 2,
+      "handlers_started": 3,
+      "handlers_skipped_reset_before_start": 1,
+      "responses_sent": 2,
+      "handler_ticks_total": 9,
+      "peak_counted_streams": 2,
+      "peak_running_handlers": 2,
+      "peak_queue": 2
+    },
+    "ticks_run": 12
+  }
+]

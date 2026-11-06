@@ -1,0 +1,17 @@
+{
+  "name": "03_benign_occasional_cancel_per_request",
+  "description": "Benign: 20 requests per tick, one in ten cancelled.",
+  "server": {
+    "max_concurrent_streams": 100,
+    "scheduler": "per_request",
+    "handler_ticks": 5,
+    "handler_observes_cancel": false
+  },
+  "workload": {
+    "kind": "occasional_cancel",
+    "ticks": 10,
+    "per_tick": 20,
+    "reset_every": 10
+  },
+  "drain_ticks": 10
+}

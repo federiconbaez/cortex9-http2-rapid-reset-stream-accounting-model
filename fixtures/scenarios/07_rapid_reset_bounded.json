@@ -1,0 +1,16 @@
+{
+  "name": "07_rapid_reset_bounded",
+  "description": "Same pattern, bounded queue (x/net b225e7c).",
+  "server": {
+    "max_concurrent_streams": 100,
+    "scheduler": "bounded_queue",
+    "handler_ticks": 5,
+    "handler_observes_cancel": false
+  },
+  "workload": {
+    "kind": "open_then_reset",
+    "ticks": 10,
+    "per_tick": 200
+  },
+  "drain_ticks": 10
+}

@@ -1,0 +1,16 @@
+{
+  "name": "06_rapid_reset_per_request",
+  "description": "Open-then-reset, 200 per tick: counted streams stay low, handlers keep running.",
+  "server": {
+    "max_concurrent_streams": 100,
+    "scheduler": "per_request",
+    "handler_ticks": 5,
+    "handler_observes_cancel": false
+  },
+  "workload": {
+    "kind": "open_then_reset",
+    "ticks": 10,
+    "per_tick": 200
+  },
+  "drain_ticks": 10
+}

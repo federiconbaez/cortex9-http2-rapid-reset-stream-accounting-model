@@ -1,0 +1,13 @@
+scenario,scheduler,max_streams,handler_ticks,observes_cancel,verdict,error,error_tick,accepted,refused,resets,handlers_started,skipped,responses,handler_ticks_total,peak_counted,peak_running,peak_queue
+01_benign_requests_per_request,PerRequest,100,5,false,work_bounded,,,200,0,0,200,0,200,1000,100,100,0
+02_benign_requests_bounded,BoundedQueue,100,5,false,work_bounded,,,200,0,0,200,0,200,1000,100,100,0
+03_benign_occasional_cancel_per_request,PerRequest,100,5,false,work_bounded,,,200,0,20,200,0,180,1000,91,100,0
+04_benign_occasional_cancel_bounded,BoundedQueue,100,5,false,work_bounded,,,200,0,20,200,0,180,1000,91,100,0
+05_over_limit_no_reset_per_request,PerRequest,100,5,false,work_bounded,,,200,1800,0,200,0,200,1000,100,100,0
+06_rapid_reset_per_request,PerRequest,100,5,false,work_exceeds_stream_limit,,,2000,0,2000,2000,0,0,10000,1,1000,0
+07_rapid_reset_bounded,BoundedQueue,100,5,false,connection_closed,EnhanceYourCalm,2,502,0,501,100,0,0,200,1,100,401
+08_rapid_reset_per_request_handlers_cancel,PerRequest,100,5,true,work_exceeds_stream_limit,,,2000,0,2000,2000,0,0,0,1,200,0
+09_rapid_reset_bounded_small_rate,BoundedQueue,100,5,false,work_bounded,,,500,0,500,200,300,0,1000,1,100,150
+10_bad_stream_id,PerRequest,100,5,false,connection_closed,ProtocolErrorStreamId,0,0,0,0,0,0,0,0,0,0,0
+11_rst_on_idle,PerRequest,100,5,false,connection_closed,ProtocolErrorRstIdle,0,1,0,0,1,0,0,0,1,1,0
+12_reset_before_start_skipped,BoundedQueue,2,3,false,work_bounded,,,4,0,2,3,1,2,9,2,2,2

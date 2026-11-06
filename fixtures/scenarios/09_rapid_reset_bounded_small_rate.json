@@ -1,0 +1,16 @@
+{
+  "name": "09_rapid_reset_bounded_small_rate",
+  "description": "Open-then-reset at 50 per tick with bounded queue.",
+  "server": {
+    "max_concurrent_streams": 100,
+    "scheduler": "bounded_queue",
+    "handler_ticks": 5,
+    "handler_observes_cancel": false
+  },
+  "workload": {
+    "kind": "open_then_reset",
+    "ticks": 10,
+    "per_tick": 50
+  },
+  "drain_ticks": 10
+}

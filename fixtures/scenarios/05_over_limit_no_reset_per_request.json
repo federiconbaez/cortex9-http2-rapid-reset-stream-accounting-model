@@ -1,0 +1,16 @@
+{
+  "name": "05_over_limit_no_reset_per_request",
+  "description": "Requests beyond the limit without resets: \u00a75.1.2 refuses streams, so work stays bounded even with the per-request scheduler.",
+  "server": {
+    "max_concurrent_streams": 100,
+    "scheduler": "per_request",
+    "handler_ticks": 5,
+    "handler_observes_cancel": false
+  },
+  "workload": {
+    "kind": "requests",
+    "ticks": 10,
+    "per_tick": 200
+  },
+  "drain_ticks": 10
+}

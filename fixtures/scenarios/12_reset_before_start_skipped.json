@@ -1,0 +1,48 @@
+{
+  "name": "12_reset_before_start_skipped",
+  "description": "Bounded queue with limit 2: requests 1 and 3 run; 3 is reset, then 5 and 7 arrive while one handler slot is taken; 5 is reset while queued and is skipped when a slot frees.",
+  "server": {
+    "max_concurrent_streams": 2,
+    "scheduler": "bounded_queue",
+    "handler_ticks": 3,
+    "handler_observes_cancel": false
+  },
+  "workload": {
+    "kind": "explicit",
+    "ticks": [
+      [
+        {
+          "f": "headers",
+          "id": 1,
+          "end_stream": true
+        },
+        {
+          "f": "headers",
+          "id": 3,
+          "end_stream": true
+        },
+        {
+          "f": "rst_stream",
+          "id": 3
+        }
+      ],
+      [
+        {
+          "f": "headers",
+          "id": 5,
+          "end_stream": true
+        },
+        {
+          "f": "rst_stream",
+          "id": 5
+        },
+        {
+          "f": "headers",
+          "id": 7,
+          "end_stream": true
+        }
+      ]
+    ]
+  },
+  "drain_ticks": 10
+}

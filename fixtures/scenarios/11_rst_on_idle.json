@@ -1,0 +1,27 @@
+{
+  "name": "11_rst_on_idle",
+  "description": "RST_STREAM for an id never opened: \u00a76.4 connection error.",
+  "server": {
+    "max_concurrent_streams": 100,
+    "scheduler": "per_request",
+    "handler_ticks": 5,
+    "handler_observes_cancel": false
+  },
+  "workload": {
+    "kind": "explicit",
+    "ticks": [
+      [
+        {
+          "f": "headers",
+          "id": 1,
+          "end_stream": true
+        },
+        {
+          "f": "rst_stream",
+          "id": 7
+        }
+      ]
+    ]
+  },
+  "drain_ticks": 10
+}
